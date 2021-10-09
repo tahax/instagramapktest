@@ -1,7 +1,7 @@
 // Make the text element draggable.
 $(document).ready(function () {
   $(function () {
-    $("#theText").sortable({
+    $("#theText").draggable({
       containment: "parent", // set draggable area. Ref: https://www.encodedna.com/jquery/limit-the-draggable-area-using-jquery-ui.htm
     });
   });
