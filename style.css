@@ -39,7 +39,7 @@ img {
 
 .mysticker-parent{
   position: absolute;
-  top: 90px;
+  top: 0;
   left: 0;
   border: dashed 2px #ff7f27;
   display: block;

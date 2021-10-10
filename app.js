@@ -8,6 +8,8 @@ $(document).ready(function () {
       containment: "parent", // set draggable area. Ref: https://www.encodedna.com/jquery/limit-the-draggable-area-using-jquery-ui.htm
     });
     $("#mysticker").resizable({ aspectRatio: true });
+    document.querySelector("#mysticker").style.width = "100%";
+    document.querySelector("#mysticker").style.height = "auto";
   });
 });
 
