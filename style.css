@@ -37,6 +37,15 @@ img {
   cursor: move;
 }
 
+.mysticker-parent{
+  position: absolute;
+  top: 90px;
+  left: 0;
+  border: dashed 2px #ff7f27;
+  display: block;
+  cursor: move;
+}
+
 canvas {
   max-width: 100%;
 }

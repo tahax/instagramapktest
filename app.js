@@ -4,6 +4,10 @@ $(document).ready(function () {
     $("#theText").draggable({
       containment: "parent", // set draggable area. Ref: https://www.encodedna.com/jquery/limit-the-draggable-area-using-jquery-ui.htm
     });
+    $(".mysticker-parent").draggable({
+      containment: "parent", // set draggable area. Ref: https://www.encodedna.com/jquery/limit-the-draggable-area-using-jquery-ui.htm
+    });
+    $("#mysticker").resizable({ aspectRatio: true });
   });
 });
 
@@ -32,6 +36,30 @@ let showImage = (fl) => {
   }
 };
 
+let chooseSticker = () => {
+  document.getElementById("filetwo").click();
+};
+
+let showSticker = (fl) => {
+  if (fl.files.length > 0) {
+    let reader = new FileReader();
+
+    reader.onload = function (e) {
+      let img = new Image();
+
+      img.onload = function () {
+        document.getElementById("theText").style.display = "block";
+        document.getElementById("bt").style.display = "block";
+        document.getElementById("textArea").style.display = "block";
+      };
+
+      img.src = e.target.result; // actual image.
+      document.getElementById("mysticker").src = reader.result; // Add the image on the form.
+    };
+    reader.readAsDataURL(fl.files[0]);
+  }
+};
+
 let textContainer;
 let t = "sample text";
 
@@ -50,6 +78,10 @@ let saveImageWithText = () => {
   // Create an image object.
   let img = new Image();
   img.src = document.getElementById("myimage").src;
+
+  // Create an image object.
+  let sticker = new Image();
+  sticker.src = document.getElementById("mysticker").src;
 
   // Create a canvas object.
   let canvas = document.createElement("canvas");
@@ -70,6 +102,11 @@ let saveImageWithText = () => {
 
     // Draw the image.
     ctx.drawImage(img, 0, 0);
+    let stickerParent = document.querySelector(".mysticker-parent");
+    let stickerWidth = stickerParent.offsetWidth;
+    let stickerHeight = stickerParent.offsetHeight;;
+    console.log(stickerWidth);
+    ctx.drawImage(sticker, parseInt(window.getComputedStyle(stickerParent).left), parseInt(window.getComputedStyle(stickerParent).top) , stickerWidth , stickerHeight);
 
     textContainer.style.border = 0;
 
